@@ -5,6 +5,7 @@
 #include <ctime>
 using namespace std;
 
+//详细解释请看
 int non_manacher_naive(const string &s) {
     int ans = 0, odd = 0, even = 0;
     for (int i = 0; i < s.length(); ++i) {
@@ -97,16 +98,16 @@ void benchmark() {
 }
 
 int main() {
-    /*Test
+    
     string s = "ABABAB";
-    string s1 = "AABBAA";
+    string s1 = "aba";
     cout << odd_max_palindrome_length_manacher(s) << endl;
     cout << even_max_palindrome_length_manacher(s1) << endl;
     cout << Manacher(s) << endl;
     cout << Manacher(s1) <<  endl;
     cout << non_manacher_naive(s) << endl;
     cout << non_manacher_naive(s1) << endl;
-    */
-   benchmark();
+    
+   //benchmark();
     return 0;
 }
