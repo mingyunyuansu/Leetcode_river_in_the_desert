@@ -13,25 +13,23 @@ void print_arr(vector<int> &arr) {
     cout << endl;
 }
 
-void merge(vector<int> &v, vector<int> &ans, int l, int r, int mid) {
-    vector<int> tmp(r - l);
-    int i = l, j = mid, curr = 0;
-    while (i < mid || j < r) {
-        if (i < mid && j < r) {
-            if (v[i] < v[j]) {
-                tmp[curr++] = v[i++];
-            }
-            else tmp[curr++] = v[j++];
-        }
-        else if (i < mid) tmp[curr++] = v[i++];
-        else if (j < r) tmp[curr++] = v[j++];
+void merge(vector<int> &v, vector<int> &ans, int start, int end, int mid) {
+    int l = start, r = mid, curr = start;
+    while (l < mid && r < end) {
+        ans[curr++] = v[l] < v[r] ? v[l++] : v[r++];
     }
-    copy(tmp.begin(), tmp.end(), v.begin() + l);
+    while (l < v.size() && l < mid) {
+        ans[curr++] = v[l++];
+    }
+    while (r < v.size() && r < end) {
+        ans[curr++] = v[r++];
+    }
+    copy(ans.begin() + start, ans.begin() + end, v.begin() + start);
     print_arr(v);
 }
 
 int main() {
-    vector<int> v{1,4,6,3,8,4,66,3, 12,5,7,9};
+    vector<int> v{-4,0,7,4,9,-5,-1,0,-7,-1};
     int sz = 1;
     vector<int> ans(v.size());
     for (; sz < v.size(); sz <<= 1) {
