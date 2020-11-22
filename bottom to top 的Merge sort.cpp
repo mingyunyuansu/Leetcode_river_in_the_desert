@@ -15,7 +15,7 @@ void print_arr(vector<int> &arr) {
 
 void merge(vector<int> &v, vector<int> &ans, int start, int end, int mid) {
     int l = start, r = mid, curr = start;
-    while (l < mid && r < end) {
+    while (l < v.size() && r < v.size() && l < mid && r < end) {
         ans[curr++] = v[l] < v[r] ? v[l++] : v[r++];
     }
     while (l < v.size() && l < mid) {
